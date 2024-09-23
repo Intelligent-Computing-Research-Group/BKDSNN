@@ -1,0 +1,351 @@
+vit_snn(
+  (patch_embed): SpikingTokenizer(
+    (proj_conv): QuanConv2d(
+      3, 48, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+      (quan_w_fn): LsqQuan()
+      (quan_a_fn): IdentityQuan()
+    )
+    (proj_bn): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (proj1_lif): MultiStepLIFNode(
+      v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+      (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+    )
+    (proj1_conv): QuanConv2d(
+      48, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+      (quan_w_fn): LsqQuan()
+      (quan_a_fn): IdentityQuan()
+    )
+    (proj1_bn): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (proj2_lif): MultiStepLIFNode(
+      v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+      (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+    )
+    (proj2_conv): QuanConv2d(
+      96, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+      (quan_w_fn): LsqQuan()
+      (quan_a_fn): IdentityQuan()
+    )
+    (proj2_bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (proj2_mp): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (proj3_lif): MultiStepLIFNode(
+      v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+      (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+    )
+    (proj3_conv): QuanConv2d(
+      192, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+      (quan_w_fn): LsqQuan()
+      (quan_a_fn): IdentityQuan()
+    )
+    (proj3_bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (proj3_mp): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (proj4_lif): MultiStepLIFNode(
+      v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+      (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+    )
+    (proj4_conv): QuanConv2d(
+      384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+      (quan_w_fn): LsqQuan()
+      (quan_a_fn): IdentityQuan()
+    )
+    (proj4_bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (block): ModuleList(
+    (0): SpikingTransformer(
+      (norm1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (attn): SpikingSelfAttention(
+        (proj_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (q_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,), bias=False
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (q_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (q_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (k_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,), bias=False
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (k_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (k_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (v_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,), bias=False
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (v_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (v_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (attn_lif): MultiStepLIFNode(
+          v_threshold=0.5, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (proj_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,)
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (proj_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (mlp): MLP(
+        (mlp1_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (mlp1_conv): QuanConv2d(
+          384, 1536, kernel_size=(1, 1), stride=(1, 1)
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (mlp1_bn): BatchNorm2d(1536, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (mlp2_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (mlp2_conv): QuanConv2d(
+          1536, 384, kernel_size=(1, 1), stride=(1, 1)
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (mlp2_bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): SpikingTransformer(
+      (norm1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (attn): SpikingSelfAttention(
+        (proj_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (q_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,), bias=False
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (q_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (q_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (k_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,), bias=False
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (k_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (k_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (v_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,), bias=False
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (v_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (v_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (attn_lif): MultiStepLIFNode(
+          v_threshold=0.5, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (proj_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,)
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (proj_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (drop_path): DropPath(drop_prob=0.067)
+      (norm2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (mlp): MLP(
+        (mlp1_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (mlp1_conv): QuanConv2d(
+          384, 1536, kernel_size=(1, 1), stride=(1, 1)
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (mlp1_bn): BatchNorm2d(1536, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (mlp2_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (mlp2_conv): QuanConv2d(
+          1536, 384, kernel_size=(1, 1), stride=(1, 1)
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (mlp2_bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (2): SpikingTransformer(
+      (norm1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (attn): SpikingSelfAttention(
+        (proj_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (q_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,), bias=False
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (q_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (q_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (k_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,), bias=False
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (k_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (k_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (v_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,), bias=False
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (v_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (v_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (attn_lif): MultiStepLIFNode(
+          v_threshold=0.5, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (proj_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,)
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (proj_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (drop_path): DropPath(drop_prob=0.133)
+      (norm2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (mlp): MLP(
+        (mlp1_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (mlp1_conv): QuanConv2d(
+          384, 1536, kernel_size=(1, 1), stride=(1, 1)
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (mlp1_bn): BatchNorm2d(1536, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (mlp2_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (mlp2_conv): QuanConv2d(
+          1536, 384, kernel_size=(1, 1), stride=(1, 1)
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (mlp2_bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (3): SpikingTransformer(
+      (norm1): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (attn): SpikingSelfAttention(
+        (proj_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (q_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,), bias=False
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (q_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (q_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (k_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,), bias=False
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (k_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (k_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (v_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,), bias=False
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (v_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (v_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (attn_lif): MultiStepLIFNode(
+          v_threshold=0.5, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (proj_conv): QuanConv1d(
+          384, 384, kernel_size=(1,), stride=(1,)
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (proj_bn): BatchNorm1d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (drop_path): DropPath(drop_prob=0.200)
+      (norm2): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+      (mlp): MLP(
+        (mlp1_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (mlp1_conv): QuanConv2d(
+          384, 1536, kernel_size=(1, 1), stride=(1, 1)
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (mlp1_bn): BatchNorm2d(1536, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (mlp2_lif): MultiStepLIFNode(
+          v_threshold=1.0, v_reset=0.0, detach_reset=True, tau=2.0, backend=cupy
+          (surrogate_function): Sigmoid(alpha=4.0, spiking=True)
+        )
+        (mlp2_conv): QuanConv2d(
+          1536, 384, kernel_size=(1, 1), stride=(1, 1)
+          (quan_w_fn): LsqQuan()
+          (quan_a_fn): IdentityQuan()
+        )
+        (mlp2_bn): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (head): QuanLinear(
+    in_features=384, out_features=10, bias=True
+    (quan_w_fn): LsqQuan()
+    (quan_a_fn): IdentityQuan()
+  )
+)

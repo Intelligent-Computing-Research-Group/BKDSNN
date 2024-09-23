@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
+    <option name="confirmBeforeUploading" value="false" />
+    <serverData>
+      <paths name="zekai_xu@192.168.1.69:22 key">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/zekai_xu/SNN/code/Spikingformer-CML" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="zekai_xu@58.220.114.190:7022 key">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/zekai_xu/SNN/code/Spikingformer-CML" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
