@@ -36,7 +36,16 @@
 ![image](architecture.png)
 
 
-This is the official project repository for BKDSNN: Enhancing the Performance of Learning-based Spiking Neural Networks Training with Blurred Knowledge Distillation, which has been accepted by ECCV2024.
+This is the official project repository for BKDSNN: Enhancing the Performance of Learning-based Spiking Neural Networks Training with Blurred Knowledge Distillation, which has been accepted by ECCV2024. If you find this repository helpful, Please kindly cite:
+```
+@inproceedings{
+spikeziptf2024,
+title={BKDSNN: Enhancing the Performance of Learning-based Spiking Neural Networks Training with Blurred Knowledge Distillation},
+author={Zekai Xu and Kang You and Qinghai Guo and Xiang Wang and Zhezhi He},
+booktitle={18th European Conference on Computer Vision(ECCV)},
+year={2024}
+}
+```
 
 ## Usage
 
