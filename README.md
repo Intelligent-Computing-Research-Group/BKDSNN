@@ -23,10 +23,8 @@
 - [News](#news)
 - [Introduction](#introduction)
 - [Usage](#Usage)
-  - [Preparation](#Preparation)
-  - [Train](#Train)
-  - [Performance](#Performance) 
-- [Acknowledgement & Contact Information](#Acknowledgement & Contact Information)
+- [Acknowledgement](#Acknowledgement)
+- [Contact](#Contact)
   
 ## News
 
@@ -106,9 +104,10 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node
 | CML + Spikingformer-2-384(95.54) | ViT-Small(96.75)  | 4     |  5.76M     |95.90(+0.36)    | [here](https://pan.baidu.com/s/1ERW9mF2dqFwMnzJgz-TsGw?pwd=rn2g) |
 | CML + Spikingformer-4-384(95.81) | ViT-Small(96.75)  | 4     |  9.32M     |96.06(+0.25)    | [here](https://pan.baidu.com/s/1kfc5qjUx_g0wShfiFGs3Ag?pwd=iuct) |
 
-## Acknowledgement & Contact Information
+## Acknowledgement
 Related project: [Spikingformer-CML](https://github.com/zhouchenlin2096/Spikingformer-CML), [Spike-Element-Wise-ResNet](https://github.com/fangwei123456/Spike-Element-Wise-ResNet), [spikingjelly](https://github.com/fangwei123456/spikingjelly).
 
 For help or issues using this git, please submit a GitHub issue.
 
+## Contact
 For other communications related to this git, please contact sherlock.holmes.xu@sjtu.edu.cn.
