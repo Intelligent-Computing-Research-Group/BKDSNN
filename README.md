@@ -26,7 +26,8 @@
   - [Preparation](#Preparation)
   - [Train](#Train)
   - [Performance](#Performance) 
-
+- [Acknowledgement & Contact Information](#Acknowledgement & Contact Information)
+  
 ## News
 
 - [2024/7] Code of BKDSNN is released!
@@ -78,7 +79,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node
 
 ### Performance
 
-#### Main results on ImageNet-1K
+#### Main results on ImageNet-1K([ViT-Base here](https://pan.baidu.com/s/1fEMiX34dcIxpmc8VxIGn6A?pwd=k3tf), we use the pretrained checkpoint from torchvision for ResNet.)
 
 | Student                   | Teacher   | T     |  Param.     |Top-1 Acc| Download |
 | :---                      | :---:     | :---: | :---:        |:---:    | :---:    |
@@ -104,3 +105,10 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node
 | CML + Spikingformer-4-256(94.94) | ViT-Small(96.75)  | 4     |  4.15M     |95.29(+0.35)   |  [here](https://pan.baidu.com/s/1cyTRwtr7-iPOwIHlkIVkHg?pwd=wvpa) |
 | CML + Spikingformer-2-384(95.54) | ViT-Small(96.75)  | 4     |  5.76M     |95.90(+0.36)    | [here](https://pan.baidu.com/s/1ERW9mF2dqFwMnzJgz-TsGw?pwd=rn2g) |
 | CML + Spikingformer-4-384(95.81) | ViT-Small(96.75)  | 4     |  9.32M     |96.06(+0.25)    | [here](https://pan.baidu.com/s/1kfc5qjUx_g0wShfiFGs3Ag?pwd=iuct) |
+
+## Acknowledgement & Contact Information
+Related project: [Spikingformer-CML](https://github.com/zhouchenlin2096/Spikingformer-CML), [Spike-Element-Wise-ResNet](https://github.com/fangwei123456/Spike-Element-Wise-ResNet), [spikingjelly](https://github.com/fangwei123456/spikingjelly).
+
+For help or issues using this git, please submit a GitHub issue.
+
+For other communications related to this git, please contact sherlock.holmes.xu@sjtu.edu.cn.
