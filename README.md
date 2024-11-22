@@ -2,7 +2,7 @@
 
 
 <p align="center">
-| <a href="http://arxiv.org/"><b>Paper</b></a> | <a href="http://arxiv.org/"><b>Blog</b></a> |
+| <a href="http://arxiv.org/pdf/2407.09083"><b>Paper</b></a> | <a href="http://arxiv.org/pdf/2407.09083"><b>Blog</b></a> |
 </p>
 
 
